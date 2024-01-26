@@ -1,162 +1,8 @@
-// import React from 'react';
-// import { View, Text, StyleSheet, Image } from 'react-native';
-
-// const CampTentBuild = () => {
-//     return (
-//         <View style={styles.container}>
-//             <Image
-//                 style={styles.homePic}
-//                 source={require('../assets/tentHome.png')}
-//             />
-//             <View style={styles.rectangle81}></View>
-//             <Text style={styles.campingTentBuild}>Camping Tent Build</Text>
-//             <View style={styles.rectangle48}></View>
-//             <View style={styles.rectangle49}></View>
-//             {/* ... (other elements) */}
-
-//             {/* Soil Condition */}
-//             <View style={styles.rectangle85}></View>
-//             <Text style={styles.selectLocationText}>Select Location for Camping Tent Build</Text>
-//             {/* ... (other rectangles) */}
-
-//             {/* Process */}
-//             <View style={styles.rectangle84}></View>
-//             <Text style={styles.processText}>Process</Text>
-
-//             {/* Input Rectangles */}
-//             <View style={styles.rectangle93}></View>
-//             {/* ... (other input rectangles) */}
-//         </View>
-//     );
-// };
-
-// const styles = StyleSheet.create({
-//     container: {
-//         position: 'relative',
-//         width: 430,
-//         height: 932,
-//         background: '#FFFFFF',
-//     },
-//     campingTentBuild: {
-//         position: 'absolute',
-//         width: 191,
-//         height: 24,
-//         left: 4,
-//         top: 170,
-//         fontStyle: 'normal',
-//         fontWeight: '700',
-//         fontSize: 20,
-//         lineHeight: 24,
-//         textAlign: 'center',
-//         color: '#000000',
-//     },
-//     rectangle81: {
-//         position: 'absolute',
-//         width: 430,
-//         height: 165,
-//         left: 0,
-//         top: 0,
-//     },
-//     rectangle48: {
-//         position: 'absolute',
-//         width: 430,
-//         height: 56,
-//         left: 0,
-//         top: 876,
-//         background: '#5FFF9F',
-//     },
-//     rectangle49: {
-//         position: 'absolute',
-//         width: 23,
-//         height: 23,
-//         left: 108,
-//         top: 887,
-//         background: 'url(48)',
-//     },
-//     // ... (styles for other elements)
-
-//     // Soil Condition Rectangle
-//     rectangle85: {
-//         boxSizing: 'border-box',
-//         position: 'absolute',
-//         width: 373,
-//         height: 39,
-//         left: 26,
-//         top: 270,
-//         background: '#5FFF9F',
-//         border: '1px solid #6B5E5E',
-//     },
-//     selectLocationText: {
-//         position: 'absolute',
-//         width: '90%',
-//         height: 19,
-//         top: 222,
-//         fontStyle: 'normal',
-//         fontWeight: '600',
-//         fontSize: 16,
-//         lineHeight: 19,
-//         textAlign: 'center',
-//         color: '#653030',
-//     },
-//     // ... (styles for other rectangles)
-
-//     // Process Rectangle
-//     rectangle84: {
-//         boxSizing: 'border-box',
-//         position: 'absolute',
-//         width: 131,
-//         height: 37,
-//         left: 147,
-//         top: 833,
-//         background: '#5FFF9F',
-//         border: '1px solid #000000',
-//         borderRadius: 15,
-//     },
-//     processText: {
-//         position: 'absolute',
-//         width: 80,
-//         height: 24,
-//         left: 172,
-//         top: 840,
-//         fontStyle: 'normal',
-//         fontWeight: '700',
-//         fontSize: 20,
-//         lineHeight: 24,
-//         textAlign: 'center',
-//         color: 'rgba(0, 0, 0, 0.89)',
-//     },
-//     // ... (styles for other elements)
-
-//     // Input Rectangles
-//     rectangle93: {
-//         position: 'absolute',
-//         width: 10,
-//         height: 10,
-//         left: 368,
-//         top: 285,
-//         background: 'url(Inputs (22))',
-//     },
-
-//     homePic: {
-//         position: 'absolute',
-//         width: '100%',
-//         height: '15%',
-//         left: 0,
-//         top: '3%',
-//     },
-//     // ... (styles for other input rectangles)
-// });
-
-// export default CampTentBuild;
-
-// import React from 'react';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-const CampTentBuild = () => {
-    const [location, setLocation] = React.useState('');
-    const [gender, setGender] = useState('');
+const CampTentBuild = ({navigation}) => {
     const [soil, setSoil] = useState('');
     const [land, setLand] = useState('');
     const [insect, setInsect] = useState('');
@@ -166,6 +12,10 @@ const CampTentBuild = () => {
     const [weather, setWeather] = useState('');
     const [wind, setWind] = useState('');
     const [precipitation, setPrecipitation] = useState('');
+
+    const TentProcess = () =>{
+        navigation.navigate('Home');
+    }
 
     return (
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -303,8 +153,9 @@ const CampTentBuild = () => {
             {/* ... (other rectangles) */}
 
             {/* Process */}
-            <View style={styles.rectangle84}></View>
+            <TouchableOpacity style={styles.rectangle84} onPress={TentProcess}>
             <Text style={styles.processText}>Process</Text>
+                </TouchableOpacity>
 
             {/* Input Rectangles */}
             <View style={styles.rectangle93}></View>
@@ -352,9 +203,6 @@ const styles = StyleSheet.create({
         top: 887,
         backgroundColor: 'url(48)',
     },
-    // ... (styles for other elements)
-
-    // Green Box Style
     greenBox: {
         position: 'absolute',
         width: '85%',
@@ -380,9 +228,6 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         backgroundColor: '#fafafa',
     },
-    // ... (styles for other elements)
-
-    // Process Rectangle
     rectangle84: {
         position: 'absolute',
         width: 131,
@@ -398,8 +243,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: 80,
         height: 24,
-        left: '31%',
-        top: 1296,
+        left: '20%',
+        top: '12%',
         fontStyle: 'normal',
         fontWeight: '700',
         fontSize: 20,
@@ -424,7 +269,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '15%',
         left: 0,
-        top: '2%',
+        top: '2.5%',
     },
     question: {
         fontSize: 15,
@@ -436,7 +281,6 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         backgroundColor: '#fafafa',
     },
-    // ... (styles for other input rectangles)
 });
 
 export default CampTentBuild;
