@@ -157,6 +157,15 @@ import { Picker } from '@react-native-picker/picker';
 const CampTentBuild = () => {
     const [location, setLocation] = React.useState('');
     const [gender, setGender] = useState('');
+    const [soil, setSoil] = useState('');
+    const [land, setLand] = useState('');
+    const [insect, setInsect] = useState('');
+    const [tree, setTree] = useState('');
+    const [animal, setAnimal] = useState('');
+    const [terrain, setTerrain] = useState('');
+    const [weather, setWeather] = useState('');
+    const [wind, setWind] = useState('');
+    const [precipitation, setPrecipitation] = useState('');
 
     return (
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -167,120 +176,128 @@ const CampTentBuild = () => {
             />
             <View style={styles.rectangle81}></View>
             <Text style={styles.campingTentBuild}>Camping Tent Build</Text>
-            <View style={styles.rectangle48}></View>
             <View style={styles.rectangle49}></View>
             {/* ... (other elements) */}
 
             {/* Soil Condition */}
             <View style={styles.greenBox}>
                 <Text style={styles.selectLocationText}>Select Location for Camping Tent Build</Text>
-                <Text style={styles.question}>What is your gender?</Text>
+                    <Text style={styles.question}>Soil Condition</Text>
                 <Picker
-                    selectedValue={gender}
+                    selectedValue={soil}
                     style={styles.dropdown}
                     onValueChange={(itemValue, itemIndex) =>
-                        setGender(itemValue)
+                        setSoil(itemValue)
                     }>
-                    <Picker.Item label="Select Gender" value="" />
-                    <Picker.Item label="Male" value="male" />
-                    <Picker.Item label="Female" value="female" />
-                    <Picker.Item label="Other" value="other" />
+                    <Picker.Item label="Select One" value="" />
+                        <Picker.Item label="Well Drained" value="Well Drained" />
+                        <Picker.Item label="Firm and Compact" value="Firm and Compact" />
+                        <Picker.Item label="Muddy" value="Muddy" />
+                        <Picker.Item label="Sandy" value="Sandy" />
                 </Picker>
-                <Text style={styles.question}>What is your gender?</Text>
+                    <Text style={styles.question}>Topographic features of the land</Text>
                 <Picker
-                    selectedValue={gender}
+                    selectedValue={land}
                     style={styles.dropdown}
                     onValueChange={(itemValue, itemIndex) =>
-                        setGender(itemValue)
+                        setLand(itemValue)
                     }>
-                    <Picker.Item label="Select Gender" value="" />
-                    <Picker.Item label="Male" value="male" />
-                    <Picker.Item label="Female" value="female" />
-                    <Picker.Item label="Other" value="other" />
+                    <Picker.Item label="Select One" value="" />
+                        <Picker.Item label="Not eroded" value="Not eroded" />
+                        <Picker.Item label="Flat and Level" value="Flat and Level" />
+                        <Picker.Item label=" Low Lying Area" value=" Low Lying Area" />
+                        <Picker.Item label=" Gentle Slope" value=" Gentle Slope" />
                 </Picker>
-                <Text style={styles.question}>What is your gender?</Text>
+                    <Text style={styles.question}>Insect activity</Text>
                 <Picker
-                    selectedValue={gender}
+                    selectedValue={insect}
                     style={styles.dropdown}
                     onValueChange={(itemValue, itemIndex) =>
-                        setGender(itemValue)
+                        setInsect(itemValue)
                     }>
-                    <Picker.Item label="Select Gender" value="" />
-                    <Picker.Item label="Male" value="male" />
-                    <Picker.Item label="Female" value="female" />
-                    <Picker.Item label="Other" value="other" />
+                    <Picker.Item label="Select One" value="" />
+                        <Picker.Item label="Low" value="Low" />
+                        <Picker.Item label="High" value="High" />
+                        <Picker.Item label="Minimal" value="Minimal" />
+                        <Picker.Item label="Moderate" value="Moderate" />
                 </Picker>
-                <Text style={styles.question}>What is your gender?</Text>
+                    <Text style={styles.question}>surrounding trees</Text>
                 <Picker
-                    selectedValue={gender}
+                    selectedValue={tree}
                     style={styles.dropdown}
                     onValueChange={(itemValue, itemIndex) =>
-                        setGender(itemValue)
+                        setTree(itemValue)
                     }>
-                    <Picker.Item label="Select Gender" value="" />
-                    <Picker.Item label="Male" value="male" />
-                    <Picker.Item label="Female" value="female" />
-                    <Picker.Item label="Other" value="other" />
+                    <Picker.Item label="Select One" value="" />
+                    <Picker.Item label="Nearby" value="Nearby" />
+                    <Picker.Item label="Far away" value="Far away" />
+                    <Picker.Item label="Short distance away" value="Short distance away" />
+                    <Picker.Item label="very close" value="very close" />
                 </Picker>
-                <Text style={styles.question}>What is your gender?</Text>
+                    <Text style={styles.question}>Animal habitats</Text>
                 <Picker
-                    selectedValue={gender}
+                    selectedValue={animal}
                     style={styles.dropdown}
                     onValueChange={(itemValue, itemIndex) =>
-                        setGender(itemValue)
+                        setAnimal(itemValue)
                     }>
-                    <Picker.Item label="Select Gender" value="" />
-                    <Picker.Item label="Male" value="male" />
-                    <Picker.Item label="Female" value="female" />
-                    <Picker.Item label="Other" value="other" />
+                    <Picker.Item label="Select One" value="" />
+                        <Picker.Item label="Yes" value="Yes" />
+                        <Picker.Item label="No" value="No" />
+                        <Picker.Item label="Minimal" value="Minimal" />
+                        <Picker.Item label="Moderate" value="Moderate" />
                 </Picker>
-                <Text style={styles.question}>What is your gender?</Text>
+                    <Text style={styles.question}>surrounding terrain</Text>
                 <Picker
-                    selectedValue={gender}
+                    selectedValue={terrain}
                     style={styles.dropdown}
                     onValueChange={(itemValue, itemIndex) =>
-                        setGender(itemValue)
+                        setTerrain(itemValue)
                     }>
-                    <Picker.Item label="Select Gender" value="" />
-                    <Picker.Item label="Male" value="male" />
-                    <Picker.Item label="Female" value="female" />
-                    <Picker.Item label="Other" value="other" />
+                    <Picker.Item label="Select One" value="" />
+                        <Picker.Item label="Mountain Nearby" value="Mountain Nearby" />
+                        <Picker.Item label="Rolling Hills" value="Rolling Hills" />
+                        <Picker.Item label="Level_Ground" value="otLevel_Grounder" />
+                        <Picker.Item label="Arid_Rocky_Terrain" value="Arid_Rocky_Terrain" />
                 </Picker>
-                <Text style={styles.question}>What is your gender?</Text>
+                    <Text style={styles.question}>Weather Condition</Text>
                 <Picker
-                    selectedValue={gender}
+                    selectedValue={weather}
                     style={styles.dropdown}
                     onValueChange={(itemValue, itemIndex) =>
-                        setGender(itemValue)
+                        setWeather(itemValue)
                     }>
-                    <Picker.Item label="Select Gender" value="" />
-                    <Picker.Item label="Male" value="male" />
-                    <Picker.Item label="Female" value="female" />
-                    <Picker.Item label="Other" value="other" />
+                    <Picker.Item label="Select One" value="" />
+                        <Picker.Item label="Cloudy" value="Cloudy" />
+                        <Picker.Item label="Sunny" value="Sunny" />
+                        <Picker.Item label="Heavy_Rain" value="Heavy_Rain" />
+                        <Picker.Item label="Fog" value="Fog" />
                 </Picker>
-                <Text style={styles.question}>What is your gender?</Text>
+                    <Text style={styles.question}>Wind Speed</Text>
                 <Picker
-                    selectedValue={gender}
+                    selectedValue={wind}
                     style={styles.dropdown}
                     onValueChange={(itemValue, itemIndex) =>
-                        setGender(itemValue)
+                        setWind(itemValue)
                     }>
-                    <Picker.Item label="Select Gender" value="" />
-                    <Picker.Item label="Male" value="male" />
-                    <Picker.Item label="Female" value="female" />
-                    <Picker.Item label="Other" value="other" />
+                    <Picker.Item label="Select One" value="" />
+                        <Picker.Item label="High" value="High" />
+                        <Picker.Item label="Calm" value="Calm" />
+                        <Picker.Item label="Light" value="Light" />
+                        <Picker.Item label="Breezy" value="Breezy" />
                 </Picker>
-                <Text style={styles.question}>What is your gender?</Text>
+                    <Text style={styles.question}>Precipitation</Text>
                 <Picker
-                    selectedValue={gender}
+                    selectedValue={precipitation}
                     style={styles.dropdown}
                     onValueChange={(itemValue, itemIndex) =>
-                        setGender(itemValue)
+                        setPrecipitation(itemValue)
                     }>
-                    <Picker.Item label="Select Gender" value="" />
-                    <Picker.Item label="Male" value="male" />
-                    <Picker.Item label="Female" value="female" />
-                    <Picker.Item label="Other" value="other" />
+                    <Picker.Item label="Select One" value="" />
+                        <Picker.Item label="Light" value="Light" />
+                        <Picker.Item label="Heavy" value="Heavy" />
+                        <Picker.Item label="None" value="None" />
+                        <Picker.Item label="Moderate to Heavy" value="Moderate to Heavy" />
                 </Picker>
             </View>
             {/* ... (other rectangles) */}
@@ -304,7 +321,7 @@ const styles = StyleSheet.create({
     container: {
         position: 'relative',
         width: 430,
-        height: 1450,
+        height: 1350,
         backgroundColor: '#FFFFFF',
     },
     campingTentBuild: {
@@ -312,7 +329,7 @@ const styles = StyleSheet.create({
         width: 191,
         height: 24,
         left: '2.5%',
-        top: '20%',
+        top: '18%',
         fontStyle: 'normal',
         fontWeight: '700',
         fontSize: 20,
@@ -326,14 +343,6 @@ const styles = StyleSheet.create({
         height: 165,
         left: 0,
         top: 0,
-    },
-    rectangle48: {
-        position: 'absolute',
-        width: 430,
-        height: 56,
-        left: 0,
-        top: 876,
-        backgroundColor: '#5FFF9F',
     },
     rectangle49: {
         position: 'absolute',
@@ -351,10 +360,10 @@ const styles = StyleSheet.create({
         width: '85%',
         height: 'auto', // You can adjust the height as needed
         left: '2.5%',
-        top: '25%',
+        top: '22%',
         backgroundColor: '#5FFF9F',
         borderRadius: 10,
-        padding: 10,
+        padding: 20,
     },
     selectLocationText: {
         marginBottom: 10,
@@ -378,8 +387,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: 131,
         height: 37,
-        left: 147,
-        top: 833,
+        left: '25%',
+        top: 1290,
         backgroundColor: '#5FFF9F',
         borderWidth: 1,
         borderColor: '#000000',
@@ -389,8 +398,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: 80,
         height: 24,
-        left: 172,
-        top: 840,
+        left: '31%',
+        top: 1296,
         fontStyle: 'normal',
         fontWeight: '700',
         fontSize: 20,
@@ -415,10 +424,10 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '15%',
         left: 0,
-        top: '4%',
+        top: '2%',
     },
     question: {
-        fontSize: 18,
+        fontSize: 15,
         marginBottom: 10,
     },
     dropdown: {
