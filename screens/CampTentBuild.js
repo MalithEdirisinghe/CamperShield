@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
 const CampTentBuild = ({navigation}) => {
@@ -13,9 +13,64 @@ const CampTentBuild = ({navigation}) => {
     const [wind, setWind] = useState('');
     const [precipitation, setPrecipitation] = useState('');
 
-    const TentProcess = () =>{
-        navigation.navigate('Home');
-    }
+    const TentProcess = () => {
+        if (
+            soil === '' ||
+            land === '' ||
+            insect === '' ||
+            tree === '' ||
+            animal === '' ||
+            terrain === '' ||
+            weather === '' ||
+            wind === '' ||
+            precipitation === ''
+        ) {
+            Alert.alert('Error', 'Please select values for all dropdowns.');
+        } else {
+            // Construct JSON body
+            const requestBody = {
+                Soil_condition: soil,
+                Features_of_the_land: land,
+                Insect_activity: insect,
+                surrounding_trees: tree,
+                Animal_habitats: animal,
+                surrounding_terrain: terrain,
+                Weather_Condition: weather,
+                Wind_Speed: wind,
+                Precipitation: precipitation
+            };
+
+            // Make API request
+            fetch('http://13.53.174.110/tentSafety', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            })
+                .then(response => {
+                    // Handle response
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    Alert.alert('Safety Rating', `Percentage of Safe: ${data.Precentage_of_Safe}\nSafety Rating: ${data.Safety_Rating}`);
+                    if(data.Safety_Rating === 'Good'){
+                        navigation.navigate('Good');
+                    }else if(data.Safety_Rating === 'Fair'){
+                        navigation.navigate('Fair');
+                    } else if (data.Safety_Rating === 'Poor') {
+                        navigation.navigate('Poor');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Alert.alert('Error', 'Failed to process. Please try again later.');
+                });
+        }
+    };
 
     return (
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -27,9 +82,7 @@ const CampTentBuild = ({navigation}) => {
             <View style={styles.rectangle81}></View>
             <Text style={styles.campingTentBuild}>Camping Tent Build</Text>
             <View style={styles.rectangle49}></View>
-            {/* ... (other elements) */}
 
-            {/* Soil Condition */}
             <View style={styles.greenBox}>
                 <Text style={styles.selectLocationText}>Select Location for Camping Tent Build</Text>
                     <Text style={styles.question}>Soil Condition</Text>
@@ -40,10 +93,10 @@ const CampTentBuild = ({navigation}) => {
                         setSoil(itemValue)
                     }>
                     <Picker.Item label="Select One" value="" />
-                        <Picker.Item label="Well Drained" value="Well Drained" />
-                        <Picker.Item label="Firm and Compact" value="Firm and Compact" />
-                        <Picker.Item label="Muddy" value="Muddy" />
-                        <Picker.Item label="Sandy" value="Sandy" />
+                        <Picker.Item label="Well Drained" value="1" />
+                        <Picker.Item label="Firm and Compact" value="2" />
+                        <Picker.Item label="Muddy" value="3" />
+                        <Picker.Item label="Sandy" value="4" />
                 </Picker>
                     <Text style={styles.question}>Topographic features of the land</Text>
                 <Picker
@@ -53,10 +106,10 @@ const CampTentBuild = ({navigation}) => {
                         setLand(itemValue)
                     }>
                     <Picker.Item label="Select One" value="" />
-                        <Picker.Item label="Not eroded" value="Not eroded" />
-                        <Picker.Item label="Flat and Level" value="Flat and Level" />
-                        <Picker.Item label=" Low Lying Area" value=" Low Lying Area" />
-                        <Picker.Item label=" Gentle Slope" value=" Gentle Slope" />
+                        <Picker.Item label="Not eroded" value="1" />
+                        <Picker.Item label="Flat and Level" value="2" />
+                        <Picker.Item label=" Low Lying Area" value="3" />
+                        <Picker.Item label=" Gentle Slope" value="4" />
                 </Picker>
                     <Text style={styles.question}>Insect activity</Text>
                 <Picker
@@ -66,10 +119,10 @@ const CampTentBuild = ({navigation}) => {
                         setInsect(itemValue)
                     }>
                     <Picker.Item label="Select One" value="" />
-                        <Picker.Item label="Low" value="Low" />
-                        <Picker.Item label="High" value="High" />
-                        <Picker.Item label="Minimal" value="Minimal" />
-                        <Picker.Item label="Moderate" value="Moderate" />
+                        <Picker.Item label="High" value="1" />
+                        <Picker.Item label="Moderate" value="2" />
+                        <Picker.Item label="Minimal" value="3" />
+                        <Picker.Item label="Low" value="4" />
                 </Picker>
                     <Text style={styles.question}>surrounding trees</Text>
                 <Picker
@@ -79,10 +132,10 @@ const CampTentBuild = ({navigation}) => {
                         setTree(itemValue)
                     }>
                     <Picker.Item label="Select One" value="" />
-                    <Picker.Item label="Nearby" value="Nearby" />
-                    <Picker.Item label="Far away" value="Far away" />
-                    <Picker.Item label="Short distance away" value="Short distance away" />
-                    <Picker.Item label="very close" value="very close" />
+                    <Picker.Item label="Nearby" value="1" />
+                    <Picker.Item label="Far away" value="2" />
+                    <Picker.Item label="Short distance away" value="3" />
+                    <Picker.Item label="very close" value="4" />
                 </Picker>
                     <Text style={styles.question}>Animal habitats</Text>
                 <Picker
@@ -92,10 +145,10 @@ const CampTentBuild = ({navigation}) => {
                         setAnimal(itemValue)
                     }>
                     <Picker.Item label="Select One" value="" />
-                        <Picker.Item label="Yes" value="Yes" />
-                        <Picker.Item label="No" value="No" />
-                        <Picker.Item label="Minimal" value="Minimal" />
-                        <Picker.Item label="Moderate" value="Moderate" />
+                        <Picker.Item label="High" value="1" />
+                        <Picker.Item label="Moderate" value="2" />
+                        <Picker.Item label="Minimal" value="3" />
+                        <Picker.Item label="Low" value="4" />
                 </Picker>
                     <Text style={styles.question}>surrounding terrain</Text>
                 <Picker
@@ -105,10 +158,10 @@ const CampTentBuild = ({navigation}) => {
                         setTerrain(itemValue)
                     }>
                     <Picker.Item label="Select One" value="" />
-                        <Picker.Item label="Mountain Nearby" value="Mountain Nearby" />
-                        <Picker.Item label="Rolling Hills" value="Rolling Hills" />
-                        <Picker.Item label="Level_Ground" value="otLevel_Grounder" />
-                        <Picker.Item label="Arid_Rocky_Terrain" value="Arid_Rocky_Terrain" />
+                        <Picker.Item label="Mountain Nearby" value="1" />
+                        <Picker.Item label="Rolling Hills" value="2" />
+                        <Picker.Item label="Level Ground" value="3" />
+                        <Picker.Item label="Arid Rocky Terrain" value="4" />
                 </Picker>
                     <Text style={styles.question}>Weather Condition</Text>
                 <Picker
@@ -118,10 +171,10 @@ const CampTentBuild = ({navigation}) => {
                         setWeather(itemValue)
                     }>
                     <Picker.Item label="Select One" value="" />
-                        <Picker.Item label="Cloudy" value="Cloudy" />
-                        <Picker.Item label="Sunny" value="Sunny" />
-                        <Picker.Item label="Heavy_Rain" value="Heavy_Rain" />
-                        <Picker.Item label="Fog" value="Fog" />
+                        <Picker.Item label="Cloudy" value="1" />
+                        <Picker.Item label="Sunny" value="2" />
+                        <Picker.Item label="Heavy Rain" value="3" />
+                        <Picker.Item label="Fog" value="4" />
                 </Picker>
                     <Text style={styles.question}>Wind Speed</Text>
                 <Picker
@@ -131,10 +184,10 @@ const CampTentBuild = ({navigation}) => {
                         setWind(itemValue)
                     }>
                     <Picker.Item label="Select One" value="" />
-                        <Picker.Item label="High" value="High" />
-                        <Picker.Item label="Calm" value="Calm" />
-                        <Picker.Item label="Light" value="Light" />
-                        <Picker.Item label="Breezy" value="Breezy" />
+                        <Picker.Item label="High" value="1" />
+                        <Picker.Item label="Calm" value="2" />
+                        <Picker.Item label="Light" value="3" />
+                        <Picker.Item label="Breezy" value="4" />
                 </Picker>
                     <Text style={styles.question}>Precipitation</Text>
                 <Picker
@@ -144,22 +197,17 @@ const CampTentBuild = ({navigation}) => {
                         setPrecipitation(itemValue)
                     }>
                     <Picker.Item label="Select One" value="" />
-                        <Picker.Item label="Light" value="Light" />
-                        <Picker.Item label="Heavy" value="Heavy" />
-                        <Picker.Item label="None" value="None" />
-                        <Picker.Item label="Moderate to Heavy" value="Moderate to Heavy" />
+                        <Picker.Item label="Heavy" value="1" />
+                        <Picker.Item label="Light" value="2" />
+                        <Picker.Item label="None" value="3" />
+                        <Picker.Item label="Moderate to Heavy" value="4" />
                 </Picker>
             </View>
-            {/* ... (other rectangles) */}
-
-            {/* Process */}
             <TouchableOpacity style={styles.rectangle84} onPress={TentProcess}>
             <Text style={styles.processText}>Process</Text>
                 </TouchableOpacity>
 
-            {/* Input Rectangles */}
             <View style={styles.rectangle93}></View>
-            {/* ... (other input rectangles) */}
         </View>
         </ScrollView>
     );

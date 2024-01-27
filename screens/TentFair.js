@@ -1,18 +1,25 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
-const TentGood = ({ navigation }) => {
+const TentFair = ({ navigation }) => {
 
     const TentProcess = () => {
         navigation.navigate('Good');
     }
+
+    const TryAgain = () => {
+        navigation.navigate('Tent');
+    }
     return (
         <View style={styles.container}>
-            <Text style={styles.good}>Good</Text>
+            <Text style={styles.good}>Fair</Text>
             <Image
                 style={styles.image}
-                source={require('../assets/likeGood.png')}
+                source={require('../assets/fair.png')}
             />
+            <TouchableOpacity style={styles.another} onPress={TryAgain}>
+                <Text style={styles.anotherText}>Try again in another location!</Text>
+            </TouchableOpacity>
             <TouchableOpacity style={styles.guidance} onPress={TentProcess}>
                 <Text style={styles.guidanceText}>Tent Construction Guidance </Text>
             </TouchableOpacity>
@@ -36,7 +43,7 @@ const styles = StyleSheet.create({
         fontSize: 64,
         lineHeight: 77,
         textAlign: 'center',
-        color: '#70FE01',
+        color: '#FFE712',
     },
     image: {
         position: 'absolute',
@@ -67,6 +74,29 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'rgba(0, 0, 0, 0.89)',
     },
+    another: {
+        position: 'absolute',
+        width: '70%',
+        height: 40,
+        left: '15%',
+        top: '70%',
+        backgroundColor: '#EE8282',
+        borderWidth: 1,
+        borderColor: '#000000',
+        borderRadius: 15,
+    },
+    anotherText: {
+        position: 'absolute',
+        left: '15%',
+        top: '12%',
+        fontStyle: 'normal',
+        fontWeight: '700',
+        fontSize: 15,
+        lineHeight: 24,
+        textAlign: 'center',
+        color: '#FF0606',
+    },
 });
 
-export default TentGood;
+export default TentFair;
+

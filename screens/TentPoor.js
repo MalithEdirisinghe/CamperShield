@@ -8,13 +8,13 @@ const TentGood = ({ navigation }) => {
     }
     return (
         <View style={styles.container}>
-            <Text style={styles.good}>Good</Text>
+            <Text style={styles.poor}>Poor</Text>
             <Image
                 style={styles.image}
-                source={require('../assets/likeGood.png')}
+                source={require('../assets/poor.png')}
             />
             <TouchableOpacity style={styles.guidance} onPress={TentProcess}>
-                <Text style={styles.guidanceText}>Tent Construction Guidance </Text>
+                <Text style={styles.guidanceText}>Try again in another location!</Text>
             </TouchableOpacity>
         </View>
     );
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FFFFFF',
     },
-    good: {
+    poor: {
         position: 'absolute',
         width: 168,
         height: 77,
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         fontSize: 64,
         lineHeight: 77,
         textAlign: 'center',
-        color: '#70FE01',
+        color: '#FB0808',
     },
     image: {
         position: 'absolute',
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
         width: '70%',
         height: 40,
         left: '15%',
-        top: '80%',
-        backgroundColor: '#5FFF9F',
+        top: '70%',
+        backgroundColor: '#EE8282',
         borderWidth: 1,
         borderColor: '#000000',
         borderRadius: 15,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         lineHeight: 24,
         textAlign: 'center',
-        color: 'rgba(0, 0, 0, 0.89)',
+        color: '#FF0606',
     },
 });
 
