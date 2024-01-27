@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 const TentFair = ({ navigation }) => {
 
     const TentProcess = () => {
-        navigation.navigate('Good');
+        navigation.navigate('Guidance');
     }
 
     const TryAgain = () => {

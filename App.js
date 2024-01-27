@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { BackHandler, Button, StyleSheet, Text} from 'react-native';
 import { Image } from 'react-native';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
@@ -8,6 +8,9 @@ import CampTentBuild from './screens/CampTentBuild';
 import TentGood from './screens/TentGood';
 import TentFair from './screens/TentFair';
 import TentPoor from './screens/TentPoor';
+import TentGuidance from './screens/TentGuidance';
+import TentExcellent from './screens/TentExcellent';
+
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -67,8 +70,7 @@ const App = () => {
           name="Good"
           component={TentGood}
           options={() => ({
-            headerShown: false,
-            headerLeft: null, // Remove the back button
+            headerTitle: '',
           })}
         />
 
@@ -76,16 +78,29 @@ const App = () => {
           name="Fair"
           component={TentFair}
           options={() => ({
-            headerShown: false,
-            headerLeft: null, // Remove the back button
+            headerTitle: '',
           })}
         />
         <Stack.Screen
           name="Poor"
-          component={TentFair}
+          component={TentPoor}
           options={() => ({
-            headerShown: false,
-            headerLeft: null, // Remove the back button
+            headerTitle: '',
+          })}
+        />
+        <Stack.Screen
+          name="Excellent"
+          component={TentExcellent}
+          options={() => ({
+            headerTitle: '',
+          })}
+        />
+
+        <Stack.Screen
+          name="Guidance"
+          component={TentGuidance}
+          options={() => ({
+            headerTitle: '',
           })}
         />
 

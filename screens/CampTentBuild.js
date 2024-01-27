@@ -63,6 +63,8 @@ const CampTentBuild = ({navigation}) => {
                         navigation.navigate('Fair');
                     } else if (data.Safety_Rating === 'Poor') {
                         navigation.navigate('Poor');
+                    } else if (data.Safety_Rating === 'Excellent') {
+                        navigation.navigate('Excellent');
                     }
                 })
                 .catch(error => {
@@ -254,7 +256,7 @@ const styles = StyleSheet.create({
     greenBox: {
         position: 'absolute',
         width: '85%',
-        height: 'auto', // You can adjust the height as needed
+        height: 'auto',
         left: '2.5%',
         top: '22%',
         backgroundColor: '#5FFF9F',

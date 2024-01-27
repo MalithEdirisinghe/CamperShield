@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 const TentGood = ({ navigation }) => {
 
     const TentProcess = () => {
-        navigation.navigate('Good');
+        navigation.navigate('Tent');
     }
     return (
         <View style={styles.container}>

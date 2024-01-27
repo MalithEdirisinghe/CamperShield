@@ -8,10 +8,10 @@ const TentGood = ({ navigation }) => {
     }
     return (
         <View style={styles.container}>
-            <Text style={styles.good}>Good</Text>
+            <Text style={styles.excellent}>Excellent</Text>
             <Image
                 style={styles.image}
-                source={require('../assets/likeGood.png')}
+                source={require('../assets/excellent.png')}
             />
             <TouchableOpacity style={styles.guidance} onPress={TentProcess}>
                 <Text style={styles.guidanceText}>Tent Construction Guidance </Text>
@@ -25,25 +25,25 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FFFFFF',
     },
-    good: {
+    excellent: {
         position: 'absolute',
-        width: 168,
+        width: 'auto',
         height: 77,
-        left: '30%',
+        left: '25%',
         top: '15%',
         fontStyle: 'normal',
         fontWeight: '700',
-        fontSize: 64,
+        fontSize: 50,
         lineHeight: 77,
         textAlign: 'center',
-        color: '#70FE01',
+        color: '#5FFF9F',
     },
     image: {
         position: 'absolute',
         width: 168,
-        height: 120,
-        left: '30%',
-        top: '40%',
+        height: 150,
+        left: '35%',
+        top: '35%',
     },
     guidance: {
         position: 'absolute',
