@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
         width: 191,
         height: 24,
         left: '2.5%',
-        top: '18%',
+        top: '16%',
         fontStyle: 'normal',
         fontWeight: '700',
         fontSize: 20,
@@ -258,7 +258,7 @@ const styles = StyleSheet.create({
         width: '85%',
         height: 'auto',
         left: '2.5%',
-        top: '22%',
+        top: '20%',
         backgroundColor: '#5FFF9F',
         borderRadius: 10,
         padding: 20,
@@ -282,8 +282,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         width: 131,
         height: 37,
-        left: '25%',
-        top: 1290,
+        left: '30%',
+        top: 1270,
         backgroundColor: '#5FFF9F',
         borderWidth: 1,
         borderColor: '#000000',
@@ -302,9 +302,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'rgba(0, 0, 0, 0.89)',
     },
-    // ... (styles for other elements)
-
-    // Input Rectangles
     rectangle93: {
         position: 'absolute',
         width: 10,
@@ -319,7 +316,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '15%',
         left: 0,
-        top: '2.5%',
+        top: '0%',
     },
     question: {
         fontSize: 15,

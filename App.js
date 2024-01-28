@@ -38,10 +38,9 @@ const App = () => {
             />
           ),
           headerShown: false,
-          headerLeft: null, // Remove the back button
+          headerLeft: null,
         })}
       />
-      {/* Add other Tab.Screen components here */}
     </Tab.Navigator>
   );
 
@@ -54,7 +53,7 @@ const App = () => {
           component={LoginScreen}
           options={() => ({
             headerShown: false,
-            headerLeft: null, // Remove the back button
+            headerLeft: null,
           })}
         />
         <Stack.Screen
@@ -62,7 +61,7 @@ const App = () => {
           component={RegisterScreen}
           options={() => ({
             headerShown: false,
-            headerLeft: null, // Remove the back button
+            headerLeft: null,
           })}
         />
 
@@ -109,15 +108,15 @@ const App = () => {
           component={HomeTabNavigator}
           options={() => ({
             headerShown: false,
-            headerLeft: null, // Remove the back button
+            headerLeft: null,
           })}
         />
         <Stack.Screen
           name="Tent"
           component={CampTentBuild}
           options={() => ({
-            headerShown: false,
-            headerLeft: null, // Remove the back button
+            headerTitle: '',
+            // headerStyle:
           })}
         />
       </Stack.Navigator>
