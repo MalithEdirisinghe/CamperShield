@@ -150,13 +150,13 @@ export default function LoginScreen({ navigation }) {
     }
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.wildlifeText}>CamperShield</Text>
+        <View contentContainerStyle={styles.container}>
+            <Text style={styles.wildlifeText}>CamperShield</Text>
             <View style={styles.frame1}>
                 <View style={styles.fluentBatteryIcon} />
                 <Text style={styles.loginTitle}>Login</Text>
-            
-            <Text style={styles.orConnectWith}>or connect with</Text>
+                <Text style={styles.orConnectWith}>or connect with</Text>
+
             <View style={styles.frame16}>
                 <TouchableOpacity style={styles.facebookIcon}  />
                 <TouchableOpacity style={styles.instagramIcon} />
@@ -218,7 +218,7 @@ export default function LoginScreen({ navigation }) {
                 <Text style={styles.forgetPasswordText}>Forget password</Text>
             </TouchableOpacity>
             </View>
-        </ScrollView>
+        </View>
     );
 }
 
@@ -230,15 +230,14 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     wildlifeText:{
-        top: 25,
-        right: 25,
+        top: '100%',
         fontSize: 25,
         fontWeight: 'bold',
         textAlign: 'center'
     },
     frame1: {
-        width: 380,
-        height: 932,
+        width: '90%',
+        height: '2000%',
         backgroundColor: '#FFFFFF',
         borderWidth: 2,
         borderRadius: 25,
@@ -247,7 +246,7 @@ const styles = StyleSheet.create({
         shadowRadius: 30,
         shadowOpacity: 0.5,
         top: 100,
-        left:5,
+        left:'5%',
         position: 'absolute',
     },
     fluentBatteryIcon: {
@@ -257,11 +256,14 @@ const styles = StyleSheet.create({
         left: 320,
         top: 21,
     },
+    form: {
+        left: '-2.5%'
+    },
     loginTitle: {
         width: 284,
         height: 50,
         position: 'absolute',
-        left: 45,
+        left: '10%',
         top: 10,
         fontWeight: '400',
         fontSize: 28,
@@ -273,7 +275,7 @@ const styles = StyleSheet.create({
         width: 183,
         height: 24,
         position: 'absolute',
-        left: 130,
+        left: 100,
         top: 589,
         fontWeight: '400',
         fontSize: 20,
@@ -308,7 +310,7 @@ const styles = StyleSheet.create({
         width: 58,
         height: 23,
         position: 'absolute',
-        left: 100,
+        left: 90,
         top: 170,
         fontWeight: '400',
         fontSize: 20,
@@ -386,7 +388,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#D5C5C5',
         top: 15,
-        left: 5,
+        left: -10,
     },
     rememberPasswordText: {
         width: 176,
@@ -395,7 +397,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         lineHeight: 18,
         color: '#6B5E5E',
-        left: 30,
+        left: 20,
     },
     forgetPassword: {
         width: 143,
@@ -415,7 +417,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         lineHeight: 18,
         color: '#1C4EFF',
-        left: 95,
+        left: 80,
         top: 48,
         position: 'absolute',
     },
@@ -425,7 +427,7 @@ const styles = StyleSheet.create({
     },
     eyeIcon: {
         position: 'absolute',
-        right: 55,
+        right: 30,
         top: 255
     },
     eyeIconText: {

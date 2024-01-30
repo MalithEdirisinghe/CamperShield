@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ToastAndroid } from 'react-native';
 import firebase from 'firebase/app';
 import { getAuth, signOut } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
@@ -36,9 +36,11 @@ export default function HomeScreen({ navigation }) {
     };
 
     const OpenTent = () => {
-        // Close the modal when the Home button is pressed
         navigation.navigate('Tent');
-        // You can also navigate to the Home screen here
+    };
+
+    const openTracking = () => {
+        navigation.navigate('Track');
     };
 
     const fetchUserData = async () => {
@@ -56,10 +58,16 @@ export default function HomeScreen({ navigation }) {
                     setProfileImageUrl(url);
                 })
                 .catch((error) => {
-                    console.error('Error fetching profile picture:', error);
+                    // console.error('Error fetching profile picture:', error);
+                    const value = 'Not available profile picture.';
+                    ToastAndroid.showWithGravityAndOffset(
+                        value,
+                        ToastAndroid.SHORT,
+                        ToastAndroid.BOTTOM,
+                        25,
+                        50
+                    );
                 });
-
-            // Set the userData state
             setUserData(user);
         }
     };
@@ -74,10 +82,12 @@ export default function HomeScreen({ navigation }) {
             </View>
             <View style={styles.rectangle30}></View>
 
+            <TouchableOpacity onPress={openTracking}>
             <Image
                 style={styles.animal}
                 source={require('../assets/Animal.png')}
             />
+            </TouchableOpacity>
 
             <TouchableOpacity onPress={OpenTent}>
             <Image
@@ -118,12 +128,9 @@ export default function HomeScreen({ navigation }) {
                 />
             </View>
 
-            {/* More components for Ellipses, text, images, etc. */}
-
 
 
             <View style={styles.rectangle38}>
-                {/* Content for Rectangle 38 */}
             </View>
 
             {isModalVisible && (
@@ -179,7 +186,7 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         width: 430,
-        minHeight: 932, // Set minHeight to ensure scrolling when content exceeds the screen height
+        minHeight: 932,
         backgroundColor: '#D8F6E4',
     },
     rectangle44: {

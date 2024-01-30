@@ -30,6 +30,15 @@ export default function SignupScreen({ navigation }) {
                 25,
                 50
             );
+        } else if (password.length < 6) {
+            const value = 'Password must be at least 6 characters long.';
+            ToastAndroid.showWithGravityAndOffset(
+                value,
+                ToastAndroid.SHORT,
+                ToastAndroid.BOTTOM,
+                25,
+                50
+            );
         } else if (password !== confirmPassword) {
             const value = 'Passwords do not match.';
             ToastAndroid.showWithGravityAndOffset(
@@ -99,6 +108,7 @@ export default function SignupScreen({ navigation }) {
             }
         }
     };
+
 
     const handleLogin = () => {
         navigation.navigate('Login');
@@ -279,8 +289,8 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     frame1: {
-        width: 380,
-        height: 932,
+        width: '95%',
+        height: 'auto',
         backgroundColor: '#FFFFFF',
         borderWidth: 2,
         borderRadius: 25,
@@ -289,7 +299,7 @@ const styles = StyleSheet.create({
         shadowRadius: 30,
         shadowOpacity: 0.5,
         top: 100,
-        left: 5,
+        left: '3%',
         position: 'absolute',
     },
     RegisterLabel: {

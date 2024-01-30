@@ -10,6 +10,7 @@ import TentFair from './screens/TentFair';
 import TentPoor from './screens/TentPoor';
 import TentGuidance from './screens/TentGuidance';
 import TentExcellent from './screens/TentExcellent';
+import AnimalTracking from './screens/AnimalTracking';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -99,7 +100,7 @@ const App = () => {
           name="Guidance"
           component={TentGuidance}
           options={() => ({
-            headerTitle: '',
+            headerTitle: 'Construction Guidance',
           })}
         />
 
@@ -114,11 +115,25 @@ const App = () => {
         <Stack.Screen
           name="Tent"
           component={CampTentBuild}
-          options={() => ({
+          options={{
             headerTitle: '',
-            // headerStyle:
-          })}
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
         />
+
+        <Stack.Screen
+          name="Track"
+          component={AnimalTracking}
+          options={{
+            headerTitle: '',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

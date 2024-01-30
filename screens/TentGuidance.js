@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { HeaderBackButton } from '@react-navigation/stack';
 
 const TentGuidance = () => {
 
