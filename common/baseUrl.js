@@ -1,0 +1,1 @@
+export const Base_url ="http://13.53.174.110";

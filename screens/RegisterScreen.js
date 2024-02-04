@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet, ToastAndroid, Button, ScrollView } from 'react-native';
+import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet, ToastAndroid, Button, ScrollView, TouchableHighlight } from 'react-native';
 import { auth, db, app } from './firebase';
 import { createUserWithEmailAndPassword, updateProfile, AuthErrorCodes } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
@@ -10,7 +10,6 @@ import 'firebase/storage';
 
 export default function SignupScreen({ navigation }) {
     const [email, setEmail] = useState('');
-    const [Volunteer, setVolunteer] = useState('');
     const [Contact, setContact] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -61,7 +60,6 @@ export default function SignupScreen({ navigation }) {
 
                 const userData = {
                     email: user.email,
-                    volunteerID: Volunteer,
                     contactNumber: Contact,
                 };
 
@@ -155,17 +153,15 @@ export default function SignupScreen({ navigation }) {
                 <Image source={{ uri: imageUri }} style={styles.image} />
             ) : (
                 <Image source={require('../assets/users.png')} style={styles.image} />
-            )}
-
-            {/* <Button title="Upload Image" onPress={handleImageUpload} /> */}
-            <TouchableOpacity onPress={handleImageUpload}>
-                <Image source={require('../assets/camVector.png')} style={styles.camera} />
-            </TouchableOpacity>
+                )}
+                <TouchableOpacity onPress={handleImageUpload}>
+                    <Image source={require('../assets/camVector.png')} style={styles.camera} />
+                </TouchableOpacity>
 
                 <View style={styles.form}>
-                    <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+                    <TouchableHighlight style={styles.loginButton} onPress={handleLogin}>
                         <Text style={styles.loginLabel}>Login</Text>
-                    </TouchableOpacity>
+                    </TouchableHighlight>
                         <Text style={styles.RegisterLabel}>Register</Text>
                 </View>
 
@@ -249,8 +245,8 @@ const styles = StyleSheet.create({
         left: 130,
     },
     camera:{
-        top: -100,
-        left: 195,
+        top: '-400%',
+        left: '57%',
     },
     input: {
         width: '80%',

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ToastAndroid } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ToastAndroid, TouchableHighlight } from 'react-native';
 import firebase from 'firebase/app';
 import { getAuth, signOut } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
@@ -82,19 +82,19 @@ export default function HomeScreen({ navigation }) {
             </View>
             <View style={styles.rectangle30}></View>
 
-            <TouchableOpacity onPress={openTracking}>
+            <TouchableHighlight onPress={openTracking}>
             <Image
                 style={styles.animal}
                 source={require('../assets/Animal.png')}
             />
-            </TouchableOpacity>
+            </TouchableHighlight>
 
-            <TouchableOpacity onPress={OpenTent}>
+            <TouchableHighlight onPress={OpenTent}>
             <Image
                 style={styles.tent}
                 source={require('../assets/Tent.png')}
                 />
-                </TouchableOpacity>
+            </TouchableHighlight>
             <Image
                 style={styles.mushroom}
                 source={require('../assets/Mushroom.png')}

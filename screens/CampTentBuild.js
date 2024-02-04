@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { Base_url } from '../common/baseUrl';
 
 const CampTentBuild = ({navigation}) => {
     const [soil, setSoil] = useState('');
@@ -12,6 +13,7 @@ const CampTentBuild = ({navigation}) => {
     const [weather, setWeather] = useState('');
     const [wind, setWind] = useState('');
     const [precipitation, setPrecipitation] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const TentProcess = () => {
         if (
@@ -27,7 +29,8 @@ const CampTentBuild = ({navigation}) => {
         ) {
             Alert.alert('Error', 'Please select values for all dropdowns.');
         } else {
-            // Construct JSON body
+            setIsLoading(true);
+            
             const requestBody = {
                 Soil_condition: soil,
                 Features_of_the_land: land,
@@ -41,7 +44,7 @@ const CampTentBuild = ({navigation}) => {
             };
 
             // Make API request
-            fetch('http://13.53.174.110/tentSafety', {
+            fetch(Base_url+'/tentSafety', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -56,6 +59,7 @@ const CampTentBuild = ({navigation}) => {
                     return response.json();
                 })
                 .then(data => {
+                    setIsLoading(false);
                     Alert.alert('Safety Rating', `Percentage of Safe: ${data.Precentage_of_Safe}\nSafety Rating: ${data.Safety_Rating}`);
                     if(data.Safety_Rating === 'Good'){
                         navigation.navigate('Good');
@@ -70,6 +74,7 @@ const CampTentBuild = ({navigation}) => {
                 .catch(error => {
                     console.error('Error:', error);
                     Alert.alert('Error', 'Failed to process. Please try again later.');
+                    setIsLoading(false);
                 });
         }
     };
@@ -205,11 +210,11 @@ const CampTentBuild = ({navigation}) => {
                         <Picker.Item label="Moderate to Heavy" value="4" />
                 </Picker>
             </View>
-            <TouchableOpacity style={styles.rectangle84} onPress={TentProcess}>
+                <TouchableOpacity style={styles.rectangle84} onPress={TentProcess}>
+                    {isLoading && <ActivityIndicator size="large" color="#000" />}
             <Text style={styles.processText}>Process</Text>
                 </TouchableOpacity>
-
-            <View style={styles.rectangle93}></View>
+                <View style={styles.rectangle93}></View>
         </View>
         </ScrollView>
     );

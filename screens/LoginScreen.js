@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, ToastAndroid, Image } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, ToastAndroid, Image, TouchableHighlight } from 'react-native';
 import { auth } from './firebase';
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import * as SecureStore from 'expo-secure-store';
@@ -85,7 +85,7 @@ export default function LoginScreen({ navigation }) {
                     }
                 })
                 .finally(() => {
-                    setLoading(false); // Hide loading indicator
+                    setLoading(false); 
                 });
         }
     };
@@ -165,9 +165,10 @@ export default function LoginScreen({ navigation }) {
             </View>
             <View style={styles.form}>
                         <Text style={styles.loginLabel}>Login</Text>
-                    <TouchableOpacity onPress={handleRegister}>
+                    <TouchableHighlight onPress={handleRegister} underlayColor="transparent">
                         <Text style={styles.RegisterLabel}>Register</Text>
-                    </TouchableOpacity>
+                    </TouchableHighlight>
+
                 <TextInput
                     style={styles.input}
                     placeholder="Email Address"

@@ -11,6 +11,7 @@ import TentPoor from './screens/TentPoor';
 import TentGuidance from './screens/TentGuidance';
 import TentExcellent from './screens/TentExcellent';
 import AnimalTracking from './screens/AnimalTracking';
+import ImageSuccessful from './screens/ImageSuccessful';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -91,6 +92,14 @@ const App = () => {
         <Stack.Screen
           name="Excellent"
           component={TentExcellent}
+          options={() => ({
+            headerTitle: '',
+          })}
+        />
+
+        <Stack.Screen
+          name="ImageSuccess"
+          component={ImageSuccessful}
           options={() => ({
             headerTitle: '',
           })}
