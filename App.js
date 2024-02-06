@@ -12,6 +12,7 @@ import TentGuidance from './screens/TentGuidance';
 import TentExcellent from './screens/TentExcellent';
 import AnimalTracking from './screens/AnimalTracking';
 import ImageSuccessful from './screens/ImageSuccessful';
+import WaterSource from './screens/WaterSource';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -135,6 +136,16 @@ const App = () => {
         <Stack.Screen
           name="Track"
           component={AnimalTracking}
+          options={{
+            headerTitle: '',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Water"
+          component={WaterSource}
           options={{
             headerTitle: '',
             headerStyle: {

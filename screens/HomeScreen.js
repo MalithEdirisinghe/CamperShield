@@ -43,6 +43,10 @@ export default function HomeScreen({ navigation }) {
         navigation.navigate('Track');
     };
 
+    const OpenBath = () => {
+        navigation.navigate('Water');
+    };
+
     const fetchUserData = async () => {
         // Get the currently signed-in user
         const user = getAuth().currentUser;
@@ -99,10 +103,12 @@ export default function HomeScreen({ navigation }) {
                 style={styles.mushroom}
                 source={require('../assets/Mushroom.png')}
             />
+            <TouchableHighlight onPress={OpenBath}>
             <Image
                 style={styles.water}
                 source={require('../assets/Water.png')}
             />
+            </TouchableHighlight>
 
             <Text style={styles.trackingAnimals}>Tracking Animals</Text>
             <Text style={styles.identifyMushrooms}>Identify Mushrooms</Text>
