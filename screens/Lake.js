@@ -24,7 +24,7 @@ const CampTentBuild = ({ navigation }) => {
             setIsLoading(true);
 
             const requestBody = {
-                type: 1,
+                type: 3,
                 waterflow: flow,
                 waterclarity: clarity,
                 wildlife: wildlife,
@@ -41,7 +41,6 @@ const CampTentBuild = ({ navigation }) => {
                 body: JSON.stringify(requestBody)
             })
                 .then(response => {
-                    // Handle response
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
@@ -73,10 +72,10 @@ const CampTentBuild = ({ navigation }) => {
             <View style={styles.container}>
                 <Image
                     style={styles.homePic}
-                    source={require('../assets/waterfall.png')}
+                    source={require('../assets/lake.png')}
                 />
                 <View style={styles.rectangle81}></View>
-                <Text style={styles.waterfallText}>Waterfall</Text>
+                <Text style={styles.waterfallText}>Lake</Text>
                 <View style={styles.rectangle49}></View>
 
                 <View style={styles.greenBox}>

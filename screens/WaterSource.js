@@ -30,6 +30,13 @@ const CampTentBuild = ({ navigation }) => {
 
     const PressNext = () => {
         // Perform action after pressing Next button
+        if (pick === 'waterfall') {
+            navigation.navigate('Waterfall');
+        } else if (pick === 'lake') {
+            navigation.navigate('Lake');
+        } else if (pick === 'river') {
+            navigation.navigate('River');
+        }
     };
 
     const switchImage = () => {

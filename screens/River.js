@@ -24,7 +24,7 @@ const CampTentBuild = ({ navigation }) => {
             setIsLoading(true);
 
             const requestBody = {
-                type: 1,
+                type: 2,
                 waterflow: flow,
                 waterclarity: clarity,
                 wildlife: wildlife,
@@ -73,10 +73,10 @@ const CampTentBuild = ({ navigation }) => {
             <View style={styles.container}>
                 <Image
                     style={styles.homePic}
-                    source={require('../assets/waterfall.png')}
+                    source={require('../assets/river.png')}
                 />
                 <View style={styles.rectangle81}></View>
-                <Text style={styles.waterfallText}>Waterfall</Text>
+                <Text style={styles.waterfallText}>River</Text>
                 <View style={styles.rectangle49}></View>
 
                 <View style={styles.greenBox}>

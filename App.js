@@ -13,6 +13,14 @@ import TentExcellent from './screens/TentExcellent';
 import AnimalTracking from './screens/AnimalTracking';
 import ImageSuccessful from './screens/ImageSuccessful';
 import WaterSource from './screens/WaterSource';
+import Waterfall from './screens/Waterfall';
+import Lake from './screens/Lake';
+import River from './screens/River';
+import GoodBath from './screens/GoodBath';
+import ExcellentBath from './screens/ExcellentBath';
+import PoorBath from './screens/PoorBath';
+import Mushroom from './screens/Mushroom';
+import MushroomSuccess from './screens/MushroomSuccess';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -26,7 +34,7 @@ const App = () => {
     <Tab.Navigator
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: '#5FFF9F', // Set the background color to green
+          backgroundColor: '#5FFF9F',
         },
       }}
     >
@@ -99,8 +107,48 @@ const App = () => {
         />
 
         <Stack.Screen
+          name="GoodBath"
+          component={GoodBath}
+          options={{
+            headerTitle: 'Good for Bath',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name="ExcellentBath"
+          component={ExcellentBath}
+          options={{
+            headerTitle: 'Excellent for Bath',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="PoorBath"
+          component={PoorBath}
+          options={{
+            headerTitle: 'Poor for Bath',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+
+        <Stack.Screen
           name="ImageSuccess"
           component={ImageSuccessful}
+          options={() => ({
+            headerTitle: '',
+          })}
+        />
+
+        <Stack.Screen
+          name="MushroomImageSuccess"
+          component={MushroomSuccess}
           options={() => ({
             headerTitle: '',
           })}
@@ -146,6 +194,47 @@ const App = () => {
         <Stack.Screen
           name="Water"
           component={WaterSource}
+          options={{
+            headerTitle: '',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name="Waterfall"
+          component={Waterfall}
+          options={{
+            headerTitle: 'Waterfall',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Lake"
+          component={Lake}
+          options={{
+            headerTitle: 'Lake',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="River"
+          component={River}
+          options={{
+            headerTitle: 'River',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Mushroom"
+          component={Mushroom}
           options={{
             headerTitle: '',
             headerStyle: {

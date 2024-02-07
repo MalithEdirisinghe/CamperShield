@@ -47,6 +47,10 @@ export default function HomeScreen({ navigation }) {
         navigation.navigate('Water');
     };
 
+    const OpenMushroom = () => {
+        navigation.navigate('Mushroom');
+    };
+
     const fetchUserData = async () => {
         // Get the currently signed-in user
         const user = getAuth().currentUser;
@@ -99,10 +103,14 @@ export default function HomeScreen({ navigation }) {
                 source={require('../assets/Tent.png')}
                 />
             </TouchableHighlight>
+
+            <TouchableHighlight onPress={OpenMushroom}>
             <Image
                 style={styles.mushroom}
                 source={require('../assets/Mushroom.png')}
             />
+            </TouchableHighlight>
+
             <TouchableHighlight onPress={OpenBath}>
             <Image
                 style={styles.water}

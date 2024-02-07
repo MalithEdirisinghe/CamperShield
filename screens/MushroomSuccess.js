@@ -9,6 +9,7 @@ const ImageSuccessful = ({ route, navigation }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const nextPredict = async () => {
+        // Convert the captured image to FormData
         setIsLoading(true);
         const formData = new FormData();
         formData.append('image', {
@@ -18,7 +19,7 @@ const ImageSuccessful = ({ route, navigation }) => {
         });
 
         try {
-            const response = await fetch(Base_url+'/footprint', {
+            const response = await fetch(Base_url + '/mushroom', {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -28,21 +29,23 @@ const ImageSuccessful = ({ route, navigation }) => {
 
             if (response.ok) {
                 const data = await response.json();
-                if (data.status === 'success') {
-                    Alert.alert('Success', `Defectiveness: ${data.defectiveness}`, [
+                if (data.status === 'success') { 
+                    Alert.alert('Success', `Defectiveness: ${data.defectiveness}\nEdibility: ${data.edibility}`, [
                         { text: 'OK', onPress: () => navigation.navigate('Home') }
                     ]);
-                    
                 } else {
+                    // Handle unsuccessful response
                     Alert.alert('Error', 'Failed to process the image.');
                 }
             } else {
+                // Handle non-200 response
                 Alert.alert('Error', 'Failed to upload image.');
             }
         } catch (error) {
+            // Handle network errors
             console.error('Error:', error);
             Alert.alert('Error', 'Network error. Please try again later.');
-        }finally{
+        } finally {
             setIsLoading(false);
         }
     };
