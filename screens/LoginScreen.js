@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, ToastAndroid, Image, TouchableHighlight } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button, ToastAndroid, Image, TouchableNativeFeedback } from 'react-native';
 import { auth } from './firebase';
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import * as SecureStore from 'expo-secure-store';
@@ -165,9 +165,9 @@ export default function LoginScreen({ navigation }) {
             </View>
             <View style={styles.form}>
                         <Text style={styles.loginLabel}>Login</Text>
-                    <TouchableHighlight onPress={handleRegister} underlayColor="transparent">
+                    <TouchableNativeFeedback onPress={handleRegister} underlayColor="transparent">
                         <Text style={styles.RegisterLabel}>Register</Text>
-                    </TouchableHighlight>
+                    </TouchableNativeFeedback>
 
                 <TextInput
                     style={styles.input}
@@ -215,9 +215,14 @@ export default function LoginScreen({ navigation }) {
                     </TouchableOpacity>
                     <Text style={styles.rememberPasswordText}>Remember password</Text>
                 </View>
-            <TouchableOpacity onPress={handleForgotPassword} style={styles.forgetPassword}>
+            <TouchableNativeFeedback onPress={handleForgotPassword} style={styles.forgetPassword}>
                 <Text style={styles.forgetPasswordText}>Forget password</Text>
-            </TouchableOpacity>
+            </TouchableNativeFeedback>
+                {/* <Button
+                    title="Forget password"
+                    onPress={handleForgotPassword}
+                    // color="#841584" 
+                /> */}
             </View>
         </View>
     );
@@ -418,8 +423,8 @@ const styles = StyleSheet.create({
         fontSize: 15,
         lineHeight: 18,
         color: '#1C4EFF',
-        left: 80,
-        top: 48,
+        left: 210,
+        top: 380,
         position: 'absolute',
     },
     passwordInput: {

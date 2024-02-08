@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ToastAndroid, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ToastAndroid, TouchableHighlight, TouchableNativeFeedback } from 'react-native';
 import firebase from 'firebase/app';
 import { getAuth, signOut } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
@@ -90,33 +90,33 @@ export default function HomeScreen({ navigation }) {
             </View>
             <View style={styles.rectangle30}></View>
 
-            <TouchableHighlight onPress={openTracking}>
+            <TouchableNativeFeedback onPress={openTracking}>
             <Image
                 style={styles.animal}
                 source={require('../assets/Animal.png')}
             />
-            </TouchableHighlight>
+            </TouchableNativeFeedback>
 
-            <TouchableHighlight onPress={OpenTent}>
+            <TouchableNativeFeedback onPress={OpenTent}>
             <Image
                 style={styles.tent}
                 source={require('../assets/Tent.png')}
                 />
-            </TouchableHighlight>
+            </TouchableNativeFeedback>
 
-            <TouchableHighlight onPress={OpenMushroom}>
+            <TouchableNativeFeedback onPress={OpenMushroom}>
             <Image
                 style={styles.mushroom}
                 source={require('../assets/Mushroom.png')}
             />
-            </TouchableHighlight>
+            </TouchableNativeFeedback>
 
-            <TouchableHighlight onPress={OpenBath}>
+            <TouchableNativeFeedback onPress={OpenBath}>
             <Image
                 style={styles.water}
                 source={require('../assets/Water.png')}
             />
-            </TouchableHighlight>
+            </TouchableNativeFeedback>
 
             <Text style={styles.trackingAnimals}>Tracking Animals</Text>
             <Text style={styles.identifyMushrooms}>Identify Mushrooms</Text>
@@ -126,12 +126,12 @@ export default function HomeScreen({ navigation }) {
             </View>
 
             <View style={styles.rectangle42} />
-            <TouchableOpacity onPress={openModal}>
+            <TouchableNativeFeedback onPress={openModal}>
                 <Image
                     style={styles.rectangle43}
                     source={require('../assets/tripleLine.png')}
                 />
-            </TouchableOpacity>
+            </TouchableNativeFeedback>
 
 
 

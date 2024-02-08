@@ -9,7 +9,7 @@ const TentGood = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <View style={styles.greenBox}>
-                <Text style={styles.good}>Good!</Text>
+                <Text style={styles.good}>Good !</Text>
                 <Image
                     style={styles.image}
                     source={require('../assets/likeGood.png')}

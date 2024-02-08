@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, ActivityIndicator, Animated } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, Alert, Animated } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
 const CampTentBuild = ({ navigation }) => {
@@ -29,8 +29,10 @@ const CampTentBuild = ({ navigation }) => {
     }, [selectedImageIndex]);
 
     const PressNext = () => {
-        // Perform action after pressing Next button
-        if (pick === 'waterfall') {
+        if(pick === 'default' || pick === ''){
+            Alert.alert('Warning','Please Select an Option');
+        }
+        else if (pick === 'waterfall') {
             navigation.navigate('Waterfall');
         } else if (pick === 'lake') {
             navigation.navigate('Lake');

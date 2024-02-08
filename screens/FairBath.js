@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
-const PoorBath = ({ navigation }) => {
+const FairBath = ({ navigation }) => {
 
     const TentProcess = () => {
         navigation.navigate('Home');
@@ -9,10 +9,10 @@ const PoorBath = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <View style={styles.greenBox}>
-                <Text style={styles.good}>Poor!</Text>
+                <Text style={styles.good}>Fair !</Text>
                 <Image
                     style={styles.image}
-                    source={require('../assets/poorBath.png')}
+                    source={require('../assets/fairBath.png')}
                 />
             </View>
             <TouchableOpacity style={styles.guidance} onPress={TentProcess}>
@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
         color: 'black',
     },
     image: {
-        width: 168,
-        height: 120,
+        width: 210,
+        height: 180,
     },
     greenBox: {
         width: '80%',
@@ -75,4 +75,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default PoorBath;
+export default FairBath;

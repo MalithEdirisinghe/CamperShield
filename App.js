@@ -21,6 +21,7 @@ import ExcellentBath from './screens/ExcellentBath';
 import PoorBath from './screens/PoorBath';
 import Mushroom from './screens/Mushroom';
 import MushroomSuccess from './screens/MushroomSuccess';
+import FairBath from './screens/FairBath';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -132,6 +133,17 @@ const App = () => {
           component={PoorBath}
           options={{
             headerTitle: 'Poor for Bath',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name="FairBath"
+          component={FairBath}
+          options={{
+            headerTitle: 'Fair for Bath',
             headerStyle: {
               backgroundColor: '#5FFF9F',
             },

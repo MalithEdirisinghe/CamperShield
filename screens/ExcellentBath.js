@@ -9,11 +9,12 @@ const TentGood = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <View style={styles.greenBox}>
-                <Text style={styles.good}>Excellent!</Text>
+                <Text style={styles.good}>Excellent !</Text>
                 <Image
                     style={styles.image}
                     source={require('../assets/Lightbulb.png')}
                 />
+                <Text style={styles.word}>Excellent place to take bath</Text>
             </View>
             <TouchableOpacity style={styles.guidance} onPress={TentProcess}>
                 <Text style={styles.guidanceText}>Home Page </Text>
@@ -72,6 +73,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'rgba(0, 0, 0, 0.89)',
         top: '15%'
+    },
+    word: {
+        top: '5%',
+        fontWeight: 'bold',
+        fontSize: 18,
     },
 });
 
