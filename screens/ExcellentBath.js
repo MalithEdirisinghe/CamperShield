@@ -6,8 +6,15 @@ const TentGood = ({ navigation }) => {
     const TentProcess = () => {
         navigation.navigate('Home');
     }
+    const NextProcess = () => {
+        navigation.navigate('ExcellentBathReport');
+    }
     return (
         <View style={styles.container}>
+            <TouchableOpacity onPress={NextProcess} style={styles.NextButton}>
+                <Text style={styles.nextText}>View more
+                    <Image style={{ width: 24, height: 24 }} source={require('../assets/more.png')} /></Text>
+            </TouchableOpacity>
             <View style={styles.greenBox}>
                 <Text style={styles.good}>Excellent !</Text>
                 <Image
@@ -45,7 +52,7 @@ const styles = StyleSheet.create({
     },
     greenBox: {
         width: '80%',
-        height: '75%',
+        height: '70%',
         backgroundColor: '#5FFF9F',
         borderWidth: 1,
         borderColor: '#000000',
@@ -78,6 +85,24 @@ const styles = StyleSheet.create({
         top: '5%',
         fontWeight: 'bold',
         fontSize: 18,
+    },
+    NextButton: {
+        width: '30%',
+        height: 35,
+        left: '60%',
+        backgroundColor: '#FFFF00',
+        borderWidth: 1,
+        borderColor: '#000000',
+        borderRadius: 15,
+        top: '10%'
+    },
+    nextText: {
+        fontWeight: '700',
+        fontSize: 15,
+        lineHeight: 35,
+        textAlign: 'center',
+        color: 'rgba(0, 0, 0, 0.89)',
+        top: '-15%'
     },
 });
 

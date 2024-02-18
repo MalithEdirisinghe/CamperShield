@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ToastAndroid, TouchableHighlight, TouchableNativeFeedback } from 'react-native';
-import firebase from 'firebase/app';
-import { getAuth, signOut } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ToastAndroid, TouchableNativeFeedback, Alert, Modal } from 'react-native';
+import { getAuth } from 'firebase/auth';
 import { getDownloadURL, ref, getStorage } from 'firebase/storage';
-import { auth, app, db } from './firebase';
+import { app } from './firebase';
 import 'firebase/database';
 import { modalStyles } from '../css/modalStyles';
+import { Calendar } from 'react-native-calendars';
 
 export default function HomeScreen({ navigation }) {
     const [isModalVisible, setModalVisible] = useState(false);
     const [userData, setUserData] = useState(null);
     const [username, setUsername] = useState(null);
     const [profileImageUrl, setProfileImageUrl] = useState(null);
+    const [isCalendarVisible, setCalendarVisible] = useState(false);
 
     const openModal = () => {
         setModalVisible(true);
@@ -23,6 +23,13 @@ export default function HomeScreen({ navigation }) {
         setModalVisible(false);
     };
 
+    const openCalModal = () => {
+        setCalendarVisible(true);
+    };
+
+    const closeCalModal = () => {
+        setCalendarVisible(false);
+    };
     const onHomePress = () => {
         // Close the modal when the Home button is pressed
         closeModal();
@@ -30,7 +37,6 @@ export default function HomeScreen({ navigation }) {
     };
 
     const home = () => {
-        // Close the modal when the Home button is pressed
         closeModal();
         // You can also navigate to the Home screen here
     };
@@ -51,8 +57,18 @@ export default function HomeScreen({ navigation }) {
         navigation.navigate('Mushroom');
     };
 
+    const OpenGuid = () => {
+        navigation.navigate('Guidance');
+        closeModal();
+    };
+
+    const OpenCalender = () => {
+        openCalModal();
+        closeModal();
+    };
+
+
     const fetchUserData = async () => {
-        // Get the currently signed-in user
         const user = getAuth().currentUser;
 
         if (user) {
@@ -65,8 +81,7 @@ export default function HomeScreen({ navigation }) {
                 .then((url) => {
                     setProfileImageUrl(url);
                 })
-                .catch((error) => {
-                    // console.error('Error fetching profile picture:', error);
+                .catch(() => {
                     const value = 'Not available profile picture.';
                     ToastAndroid.showWithGravityAndOffset(
                         value,
@@ -146,10 +161,20 @@ export default function HomeScreen({ navigation }) {
 
             <View style={styles.rectangle38}>
             </View>
+            <Modal visible={isCalendarVisible} animationType="slide" transparent={true}>
+                <View style={styles.modalContainer}>
+                    <TouchableOpacity onPress={closeCalModal}>
+                        <Image
+                            source={require('../assets/close.png')}
+                            style={{ width: 24, height: 24, left:'25%' }}
+                        />
+                    </TouchableOpacity>
+                    <Calendar />
+                </View>
+            </Modal>
 
             {isModalVisible && (
                 <View style={modalStyles.modal}>
-                    {/* {userData && ( */}
                     <View style={modalStyles.profileContainer}>
                         {profileImageUrl ? (
                             <Image source={{ uri: profileImageUrl }} style={styles.profileImage} />
@@ -157,7 +182,6 @@ export default function HomeScreen({ navigation }) {
                             <Image source={require('../assets/users.png')} style={styles.image} />
                         )}
                         <Text style={modalStyles.profileName}>{userData.displayName}</Text>
-                        {/* Add other user details as needed */}
                        
                     </View>
                     <TouchableOpacity style={modalStyles.home} onPress={home}>
@@ -174,23 +198,23 @@ export default function HomeScreen({ navigation }) {
                         />
                         <Text style={modalStyles.homeText}>My Profile</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={modalStyles.setting} onPress={home}>
+                    <TouchableOpacity style={modalStyles.setting} onPress={OpenCalender}>
                         <Image
-                            source={require('../assets/setting.png')}
-                            style={modalStyles.homes}
-                        />
-                        <Text style={modalStyles.homeText}>Settings</Text>
-                    </TouchableOpacity>
-                    {/* <TouchableOpacity style={styles.profile} onPress={home}>
-                        <Image
-                            source={require('../assets/profiles.png')}
+                            source={require('../assets/calendar.png')}
                             style={styles.homes}
                         />
-                        <Text style={styles.homeText}>My Profile</Text>
-                    </TouchableOpacity> */}
+                        <Text style={modalStyles.homeText}>Calendar</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.guidance} onPress={OpenGuid}>
+                        <Image
+                            source={require('../assets/guidance.png')}
+                            style={styles.homes}
+                        />
+                        <Text style={styles.homeText}>Tent Setup Guidance</Text>
+                    </TouchableOpacity>
                     {/* )} */}
-                    <TouchableOpacity style={modalStyles.overlay} onPress={closeModal} />
-                    {/* User profile details */}
+                    {/* <TouchableOpacity style={modalStyles.overlay} onPress={closeModal} /> */}
                 </View>
             )}
         </ScrollView>
@@ -202,6 +226,12 @@ const styles = StyleSheet.create({
         width: 430,
         minHeight: 932,
         backgroundColor: '#D8F6E4',
+    },
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
     },
     rectangle44: {
         position: 'absolute',
@@ -386,6 +416,12 @@ const styles = StyleSheet.create({
     },
     profile: {
         top: 25,
+        width: 120,
+        left: '5%',
+        justifyContent: 'center',
+    },
+    guidance: {
+        top: 60,
         width: 120,
         left: '5%',
         justifyContent: 'center',

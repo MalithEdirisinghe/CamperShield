@@ -22,6 +22,14 @@ import PoorBath from './screens/PoorBath';
 import Mushroom from './screens/Mushroom';
 import MushroomSuccess from './screens/MushroomSuccess';
 import FairBath from './screens/FairBath';
+import PoorBathReport from './screens/PoorBathReport';
+import GoodBathReport from './screens/GoodBathReport';
+import FairBathReport from './screens/FairBathReport';
+import ExcellentBathReport from './screens/ExcellentBathReport';
+import TentGuidanceGood from './screens/TentGuidanceGood';
+import TentGuidanceExcel from './screens/TentGuidanceExcel';
+import TentGuidanceFair from './screens/TentGuidanceFair';
+import AnimalSound from './screens/AnimalSound';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -175,6 +183,29 @@ const App = () => {
         />
 
         <Stack.Screen
+          name="GuidanceGood"
+          component={TentGuidanceGood}
+          options={() => ({
+            headerTitle: 'Construction Guidance-(for Good)',
+          })}
+        />
+
+        <Stack.Screen
+          name="GuidanceExcel"
+          component={TentGuidanceExcel}
+          options={() => ({
+            headerTitle: 'Construction Guidance-(for Excellent)',
+          })}
+        />
+        <Stack.Screen
+          name="GuidanceFair"
+          component={TentGuidanceFair}
+          options={() => ({
+            headerTitle: 'Construction Guidance-(for Fair)',
+          })}
+        />
+
+        <Stack.Screen
           name="Homes"
           component={HomeTabNavigator}
           options={() => ({
@@ -247,6 +278,57 @@ const App = () => {
         <Stack.Screen
           name="Mushroom"
           component={Mushroom}
+          options={{
+            headerTitle: '',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="PoorBathReport"
+          component={PoorBathReport}
+          options={{
+            headerTitle: '',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="GoodBathReport"
+          component={GoodBathReport}
+          options={{
+            headerTitle: '',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="FairBathReport"
+          component={FairBathReport}
+          options={{
+            headerTitle: '',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="ExcellentBathReport"
+          component={ExcellentBathReport}
+          options={{
+            headerTitle: '',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name="AnimalSound"
+          component={AnimalSound}
           options={{
             headerTitle: '',
             headerStyle: {

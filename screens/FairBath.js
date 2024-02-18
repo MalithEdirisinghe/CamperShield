@@ -6,14 +6,23 @@ const FairBath = ({ navigation }) => {
     const TentProcess = () => {
         navigation.navigate('Home');
     }
+
+    const NextProcess = () => {
+        navigation.navigate('FairBathReport');
+    }
     return (
         <View style={styles.container}>
+            <TouchableOpacity onPress={NextProcess} style={styles.NextButton}>
+                <Text style={styles.nextText}>View more
+                    <Image style={{ width: 24, height: 24 }} source={require('../assets/more.png')} /></Text>
+            </TouchableOpacity>
             <View style={styles.greenBox}>
                 <Text style={styles.good}>Fair !</Text>
                 <Image
                     style={styles.image}
                     source={require('../assets/fairBath.png')}
                 />
+                <Text style={styles.warnText}>Good place to take bath</Text>
             </View>
             <TouchableOpacity style={styles.guidance} onPress={TentProcess}>
                 <Text style={styles.guidanceText}>Home Page </Text>
@@ -72,6 +81,32 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'rgba(0, 0, 0, 0.89)',
         top: '15%'
+    },
+    warnText: {
+        fontWeight: '700',
+        fontSize: 20,
+        lineHeight: 20,
+        textAlign: 'center',
+        color: 'black',
+        top: '15%'
+    },
+    NextButton: {
+        width: '30%',
+        height: 35,
+        left: '60%',
+        backgroundColor: '#FFFF00',
+        borderWidth: 1,
+        borderColor: '#000000',
+        borderRadius: 15,
+        top: '10%'
+    },
+    nextText: {
+        fontWeight: '700',
+        fontSize: 15,
+        lineHeight: 35,
+        textAlign: 'center',
+        color: 'rgba(0, 0, 0, 0.89)',
+        top: '-15%'
     },
 });
 

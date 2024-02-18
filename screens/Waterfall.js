@@ -53,7 +53,7 @@ const CampTentBuild = ({ navigation }) => {
                     if (data.Safety_Rating === 'Good') {
                         navigation.navigate('GoodBath');
                     } else if (data.Safety_Rating === 'Fair') {
-                        navigation.navigate('Fair');
+                        navigation.navigate('FairBath');
                     } else if (data.Safety_Rating === 'Poor') {
                         navigation.navigate('PoorBath');
                     } else if (data.Safety_Rating === 'Excellent') {

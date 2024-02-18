@@ -4,8 +4,8 @@ import * as ImagePicker from 'expo-image-picker';
 import { Base_url } from '../common/baseUrl';
 
 const ImageSuccessful = ({ route, navigation }) => {
-    const { imageUri } = route.params;
-    const [capturedImageUri, setCapturedImageUri] = useState(imageUri);
+    const { imageUri, capImage } = route.params;
+    const [capturedImageUri, setCapturedImageUri] = useState(imageUri, capImage);
     const [isLoading, setIsLoading] = useState(false);
 
     const nextPredict = async () => {
@@ -28,11 +28,17 @@ const ImageSuccessful = ({ route, navigation }) => {
 
             if (response.ok) {
                 const data = await response.json();
-                if (data.status === 'success') {
-                    Alert.alert('Success', `Defectiveness: ${data.defectiveness}`, [
-                        { text: 'OK', onPress: () => navigation.navigate('Home') }
+                if (data.status === 'Success') {
+                    const { defectiveness, probability, restProbabilities } = data.result;
+                    const probabilitiesText = Object.entries(restProbabilities).map(([animal, prob]) => `${animal}: ${prob}`).join('\n');
+                    Alert.alert('Success', `Defectiveness: ${defectiveness}\nProbability: ${probability}\n\nRest Probabilities:\n${probabilitiesText}`, [
+                        { text: 'OK', onPress: () => {if (capturedImageUri != imageUri )
+                            {
+                            navigation.navigate('AnimalSound', { imageUri: capturedImageUri });
+                        }else{
+                            navigation.navigate('AnimalSound', { imageUri });
+                        }}}
                     ]);
-                    
                 } else {
                     Alert.alert('Error', 'Failed to process the image.');
                 }
@@ -42,7 +48,7 @@ const ImageSuccessful = ({ route, navigation }) => {
         } catch (error) {
             console.error('Error:', error);
             Alert.alert('Error', 'Network error. Please try again later.');
-        }finally{
+        } finally {
             setIsLoading(false);
         }
     };

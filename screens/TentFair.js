@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 const TentFair = ({ navigation }) => {
 
     const TentProcess = () => {
-        navigation.navigate('Guidance');
+        navigation.navigate('GuidanceFair');
     }
 
     const TryAgain = () => {
@@ -17,6 +17,11 @@ const TentFair = ({ navigation }) => {
                 style={styles.image}
                 source={require('../assets/fair.png')}
             />
+            <View style={styles.warnBox}>
+                <Text style={styles.warning}>Warning!</Text>
+                <Text style={styles.warningDesc}>This location is predicted to have a <Text style={{ color: '#C78F00' }}>"Fair" </Text>
+                    safety rating for camping tent setup, with a 50% probability. Please be aware that while the prediction indicates some suitability, caution is advised as predictions are not certain.</Text>
+            </View>
             <TouchableOpacity style={styles.another} onPress={TryAgain}>
                 <Text style={styles.anotherText}>Try again in another location!</Text>
             </TouchableOpacity>
@@ -37,7 +42,7 @@ const styles = StyleSheet.create({
         width: 168,
         height: 77,
         left: '30%',
-        top: '15%',
+        top: '5%',
         fontStyle: 'normal',
         fontWeight: '700',
         fontSize: 64,
@@ -50,14 +55,14 @@ const styles = StyleSheet.create({
         width: 168,
         height: 120,
         left: '30%',
-        top: '40%',
+        top: '20%',
     },
     guidance: {
         position: 'absolute',
         width: '70%',
         height: 40,
         left: '15%',
-        top: '80%',
+        top: '90%',
         backgroundColor: '#5FFF9F',
         borderWidth: 1,
         borderColor: '#000000',
@@ -79,7 +84,7 @@ const styles = StyleSheet.create({
         width: '70%',
         height: 40,
         left: '15%',
-        top: '70%',
+        top: '80%',
         backgroundColor: '#EE8282',
         borderWidth: 1,
         borderColor: '#000000',
@@ -95,6 +100,30 @@ const styles = StyleSheet.create({
         lineHeight: 24,
         textAlign: 'center',
         color: '#FF0606',
+    },
+    warnBox: {
+        position: 'absolute',
+        width: '80%',
+        height: '30%',
+        left: '10%',
+        top: '43%',
+        backgroundColor: '#FFE7E7',
+        borderColor: '#E80D0D',
+        borderWidth: 1,
+        borderRadius: 15,
+        padding: 20,
+    },
+    warning: {
+        textAlign: 'center',
+        fontSize: 25,
+        color: '#8A0505',
+        fontWeight: 'bold',
+        bottom: '5%',
+    },
+    warningDesc: {
+        fontSize: 15,
+        color: '#8A0505',
+        fontWeight: '500'
     },
 });
 
