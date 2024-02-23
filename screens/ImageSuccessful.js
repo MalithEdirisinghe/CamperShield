@@ -34,9 +34,9 @@ const ImageSuccessful = ({ route, navigation }) => {
                     Alert.alert('Success', `Defectiveness: ${defectiveness}\nProbability: ${probability}\n\nRest Probabilities:\n${probabilitiesText}`, [
                         { text: 'OK', onPress: () => {if (capturedImageUri != imageUri )
                             {
-                            navigation.navigate('AnimalSound', { imageUri: capturedImageUri });
+                            navigation.navigate('AnimalSound', { imageUri: capturedImageUri, defectiveness: defectiveness });
                         }else{
-                            navigation.navigate('AnimalSound', { imageUri });
+                            navigation.navigate('AnimalSound', { imageUri, defectiveness: defectiveness });
                         }}}
                     ]);
                 } else {

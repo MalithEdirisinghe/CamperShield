@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ToastAndroid, TouchableNativeFeedback, Alert, Modal } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ToastAndroid, TouchableNativeFeedback, TouchableHighlight, Modal } from 'react-native';
 import { getAuth } from 'firebase/auth';
 import { getDownloadURL, ref, getStorage } from 'firebase/storage';
 import { app } from './firebase';
@@ -163,12 +163,12 @@ export default function HomeScreen({ navigation }) {
             </View>
             <Modal visible={isCalendarVisible} animationType="slide" transparent={true}>
                 <View style={styles.modalContainer}>
-                    <TouchableOpacity onPress={closeCalModal}>
+                    <TouchableNativeFeedback onPress={closeCalModal}>
                         <Image
                             source={require('../assets/close.png')}
-                            style={{ width: 24, height: 24, left:'25%' }}
+                            style={{ width: 24, height: 24, left:'30%' }}
                         />
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
                     <Calendar />
                 </View>
             </Modal>
