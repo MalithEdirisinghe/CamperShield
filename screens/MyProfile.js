@@ -328,6 +328,12 @@ const MyProfile = ({ navigation }) => {
                         />
                         <Text style={styles.homeText}>Tent Setup Guidance</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.guidance} onPress={closeModal}>
+                        <Image
+                            source={require('../assets/closeB.png')}
+                            style={{ width: 24, height: 24, left: '195%', top: '-1570%' }}
+                        />
+                    </TouchableOpacity>
                 </View>
             )}
         </ScrollView>
