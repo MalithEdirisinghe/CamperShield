@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet, ToastAndroid, Button, ScrollView, TouchableHighlight } from 'react-native';
+import { View, Text, Image, TextInput, TouchableOpacity, StyleSheet, ToastAndroid, ActivityIndicator, ScrollView, TouchableHighlight } from 'react-native';
 import { auth, db, app } from './firebase';
 import { createUserWithEmailAndPassword, updateProfile, AuthErrorCodes } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
@@ -18,6 +18,7 @@ export default function SignupScreen({ navigation }) {
     const [imageUri, setImageUri] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword1, setShowPassword1] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleSignup = async () => {
         if (!email || !Contact || !username || !password || !confirmPassword) {
@@ -48,6 +49,7 @@ export default function SignupScreen({ navigation }) {
                 50
             );
         } else {
+            setLoading(true);
             try {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 const user = userCredential.user;
@@ -103,6 +105,8 @@ export default function SignupScreen({ navigation }) {
                     console.log(error);
                     setErrorMessage('An error occurred during signup. Please try again later.');
                 }
+            }finally{
+                setLoading(false);
             }
         }
     };
@@ -221,6 +225,12 @@ export default function SignupScreen({ navigation }) {
             </TouchableOpacity>
             {<Text style={styles.errorMessage}>{errorMessage}</Text>}
             </View>
+            {loading && (
+                <View style={styles.progressContainer}>
+                    <ActivityIndicator size="large" color="#00D972" />
+                    <Text style={styles.progressText}>Creating Account...</Text>
+                </View>
+            )}
         </ScrollView>
     );
 }
@@ -342,5 +352,22 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: 'bold',
         textAlign: 'center'
+    },
+    progressContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    progressText: {
+        marginTop: 20,
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#FFFF',
     },
 });

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button, ToastAndroid, Image, TouchableNativeFeedback } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button, ToastAndroid, Image, TouchableNativeFeedback, ActivityIndicator } from 'react-native';
 import { auth } from './firebase';
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import * as SecureStore from 'expo-secure-store';
@@ -42,7 +42,7 @@ export default function LoginScreen({ navigation }) {
                 50
             );
         } else {
-            setLoading(true);
+            setLoading(true); // Start showing progress circle
             signInWithEmailAndPassword(auth, email, password)
                 .then(() => {
                     // User logged in successfully
@@ -85,7 +85,7 @@ export default function LoginScreen({ navigation }) {
                     }
                 })
                 .finally(() => {
-                    setLoading(false); 
+                    setLoading(false); // Finish loading, hide progress circle
                 });
         }
     };
@@ -155,7 +155,6 @@ export default function LoginScreen({ navigation }) {
             <View style={styles.frame1}>
                 <View style={styles.fluentBatteryIcon} />
                 <Text style={styles.loginTitle}>Login</Text>
-                <Text style={styles.orConnectWith}>or connect with</Text>
 
             <View style={styles.frame16}>
                 <TouchableOpacity style={styles.facebookIcon}  />
@@ -218,11 +217,12 @@ export default function LoginScreen({ navigation }) {
             <TouchableNativeFeedback onPress={handleForgotPassword} style={styles.forgetPassword}>
                 <Text style={styles.forgetPasswordText}>Forget password</Text>
             </TouchableNativeFeedback>
-                {/* <Button
-                    title="Forget password"
-                    onPress={handleForgotPassword}
-                    // color="#841584" 
-                /> */}
+                {loading && (
+                    <View style={styles.progressContainer}>
+                        <ActivityIndicator size="large" color="#00D972" />
+                        <Text style={styles.progressText}>Logging in...</Text>
+                    </View>
+                )}
             </View>
         </View>
     );
@@ -276,17 +276,6 @@ const styles = StyleSheet.create({
         lineHeight: 34,
         textAlign: 'center',
         color: '#000000',
-    },
-    orConnectWith: {
-        width: 183,
-        height: 24,
-        position: 'absolute',
-        left: 100,
-        top: 589,
-        fontWeight: '400',
-        fontSize: 20,
-        lineHeight: 24,
-        color: '#747070',
     },
     frame16: {
         width: 318,
@@ -446,5 +435,22 @@ const styles = StyleSheet.create({
     },
     checkboxUnchecked: {
         fontSize: 40,
+    },
+    progressContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    progressText: {
+        marginTop: 20,
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#FFFF',
     },
 });

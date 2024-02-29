@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, ToastAndroid, TouchableNativeFeedback, TouchableHighlight, Modal } from 'react-native';
-import { getAuth } from 'firebase/auth';
+import { getAuth, signOut } from 'firebase/auth';
+import { auth } from './firebase';
 import { getDownloadURL, ref, getStorage } from 'firebase/storage';
 import { app } from './firebase';
 import 'firebase/database';
-import { modalStyles } from '../css/modalStyles';
+import { modalStyles } from '../css/modalStyles'; 
+import { BackHandler } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 
 export default function HomeScreen({ navigation }) {
@@ -13,6 +15,15 @@ export default function HomeScreen({ navigation }) {
     const [username, setUsername] = useState(null);
     const [profileImageUrl, setProfileImageUrl] = useState(null);
     const [isCalendarVisible, setCalendarVisible] = useState(false);
+
+    const backAction = () => {
+        if (navigation.isFocused()) {
+            BackHandler.exitApp();
+            return true;
+        }
+        return false;
+    };
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
 
     const openModal = () => {
         setModalVisible(true);
@@ -41,6 +52,11 @@ export default function HomeScreen({ navigation }) {
         // You can also navigate to the Home screen here
     };
 
+    const profile = () => {
+        navigation.navigate('Profile');
+        closeModal();
+    };
+
     const OpenTent = () => {
         navigation.navigate('Tent');
     };
@@ -64,6 +80,17 @@ export default function HomeScreen({ navigation }) {
 
     const OpenCalender = () => {
         openCalModal();
+        closeModal();
+    };
+
+    const handleLogout = () => {
+        signOut(auth)
+            .then(() => {
+                navigation.navigate('Login');
+            })
+            .catch((error) => {
+                console.error('Error logging out:', error);
+            });
         closeModal();
     };
 
@@ -101,8 +128,7 @@ export default function HomeScreen({ navigation }) {
 
             <View style={styles.rectangle31}></View>
             <View style={styles.rectangle28}></View>
-            <View style={styles.rectangle29}>
-            </View>
+            <View style={styles.rectangle29}></View>
             <View style={styles.rectangle30}></View>
 
             <TouchableNativeFeedback onPress={openTracking}>
@@ -191,7 +217,7 @@ export default function HomeScreen({ navigation }) {
                         />
                         <Text style={modalStyles.homeText}>Home</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={modalStyles.profile} onPress={home}>
+                    <TouchableOpacity style={modalStyles.profile} onPress={profile}>
                         <Image
                             source={require('../assets/profiles.png')}
                             style={styles.homes}
@@ -212,6 +238,11 @@ export default function HomeScreen({ navigation }) {
                             style={styles.homes}
                         />
                         <Text style={styles.homeText}>Tent Setup Guidance</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.logout} onPress={handleLogout}>
+                        
+                        <Text style={styles.logoutText}>LOGOUT</Text>
                     </TouchableOpacity>
                     {/* )} */}
                     {/* <TouchableOpacity style={modalStyles.overlay} onPress={closeModal} /> */}
@@ -239,7 +270,6 @@ const styles = StyleSheet.create({
         height: 157,
         left: 15,
         top: 748,
-        // Add background image style
     },
     rectangle38: {
         position: 'absolute',
@@ -247,7 +277,6 @@ const styles = StyleSheet.create({
         height: 23,
         left: 108,
         top: 887,
-        // Add background image style
     },
     rectangle42: {
         position: 'absolute',
@@ -258,7 +287,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#5FFF9F',
     },
     rectangle43: {
-        // position: 'absolute',
         width: 20,
         height: 15,
         left: 21,
@@ -431,6 +459,21 @@ const styles = StyleSheet.create({
         width: 120,
         left: '5%',
         justifyContent: 'center',
+    },
+    logout: {
+        top: '35%',
+        left: '10%',
+        width: '80%',
+        height: '4%',
+        borderRadius: 10,
+        backgroundColor: '#FF3939'
+    },
+    logoutText: {
+        textAlign: 'center',
+        top: '20%',
+        fontWeight: 'bold',
+        fontSize: 18,
+        color: '#FFFF'
     },
 });
 

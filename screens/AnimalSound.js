@@ -73,6 +73,10 @@ const AnimalSound = ({ route, navigation }) => {
         setWaveData(data);
     };
 
+    const handleHomeButton = () => {
+        navigation.navigate('Home');
+    };
+
     const renderWave = () => {
         if (isPlaying) {
             const pathData = waveData.map((amplitude, index) => {
@@ -105,6 +109,9 @@ const AnimalSound = ({ route, navigation }) => {
             <View style={[styles.soundWaveContainer, styles.soundWavePosition]}>
                 {renderWave()}
             </View>
+            <TouchableOpacity style={styles.home} onPress={handleHomeButton}>
+                <Text style={styles.homeText}>Home Page</Text>
+            </TouchableOpacity>
         </View>
     );
 };
@@ -150,6 +157,22 @@ const styles = StyleSheet.create({
     soundWavePosition: {
         left: '17.5%',
         top: '70.5%',
+    },
+    home: {
+        top:'40%',
+        backgroundColor: "#00D972",
+        borderRadius: 10,
+        height: 40,
+        width: '50%',
+        borderColor: 'black',
+        borderWidth: 1,
+    },
+    homeText: {
+        textAlign: 'center',
+        top: '18%',
+        fontWeight: 'bold',
+        fontSize: 16,
+        color: '#FFFF'
     },
 });
 

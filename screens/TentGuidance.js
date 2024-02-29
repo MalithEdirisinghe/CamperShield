@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     greenBox: {
         position: 'absolute',
         width: '95%',
-        height: '85%',
+        height: '90%',
         left: '2.5%',
         top: '8%',
         backgroundColor: '#5FFF9F',

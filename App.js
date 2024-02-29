@@ -30,6 +30,7 @@ import TentGuidanceGood from './screens/TentGuidanceGood';
 import TentGuidanceExcel from './screens/TentGuidanceExcel';
 import TentGuidanceFair from './screens/TentGuidanceFair';
 import AnimalSound from './screens/AnimalSound';
+import MyProfile from './screens/MyProfile';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -58,6 +59,35 @@ const App = () => {
             />
           ),
           headerShown: false,
+          headerLeft: null,
+        })}
+      />
+
+      <Tab.Screen
+        name="Profile"
+        component={MyProfile}
+        options={() => ({
+          tabBarIcon: () => (
+            <Image
+              source={require('./assets/ProfileBlack.png')}
+              style={{ width: 24, height: 24 }}
+            />
+          ),
+          headerShown: false,
+          headerLeft: null,
+        })}
+      />
+
+      <Tab.Screen
+        name="Guidance"
+        component={TentGuidance}
+        options={() => ({
+          tabBarIcon: () => (
+            <Image
+              source={require('./assets/guidanceBlack.png')}
+              style={{ width: 25, height: 25 }}
+            />
+          ),
           headerLeft: null,
         })}
       />
@@ -174,13 +204,13 @@ const App = () => {
           })}
         />
 
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Guidance"
           component={TentGuidance}
           options={() => ({
             headerTitle: 'Construction Guidance',
           })}
-        />
+        /> */}
 
         <Stack.Screen
           name="GuidanceGood"
