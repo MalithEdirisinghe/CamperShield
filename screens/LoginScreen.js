@@ -63,7 +63,7 @@ export default function LoginScreen({ navigation }) {
                 })
                 .catch(error => {
                     // Handle login errors (e.g., incorrect email or password)
-                    if (error.code === 'auth/invalid-login-credentials') {
+                    if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
                         const value = "Incorrect Email or Password";
                         ToastAndroid.showWithGravityAndOffset(
                             value,
