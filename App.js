@@ -1,5 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
-import { BackHandler, Button, StyleSheet, Text} from 'react-native';
 import { Image } from 'react-native';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
@@ -31,6 +29,7 @@ import TentGuidanceExcel from './screens/TentGuidanceExcel';
 import TentGuidanceFair from './screens/TentGuidanceFair';
 import AnimalSound from './screens/AnimalSound';
 import MyProfile from './screens/MyProfile';
+import MushroomDesc from './screens/MushroomDesc';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -204,14 +203,6 @@ const App = () => {
           })}
         />
 
-        {/* <Stack.Screen
-          name="Guidance"
-          component={TentGuidance}
-          options={() => ({
-            headerTitle: 'Construction Guidance',
-          })}
-        /> */}
-
         <Stack.Screen
           name="GuidanceGood"
           component={TentGuidanceGood}
@@ -359,6 +350,17 @@ const App = () => {
         <Stack.Screen
           name="AnimalSound"
           component={AnimalSound}
+          options={{
+            headerTitle: '',
+            headerStyle: {
+              backgroundColor: '#5FFF9F',
+            },
+          }}
+        />
+
+        <Stack.Screen
+          name="MushroomDesc"
+          component={MushroomDesc}
           options={{
             headerTitle: '',
             headerStyle: {

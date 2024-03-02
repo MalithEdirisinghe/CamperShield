@@ -42,10 +42,9 @@ export default function LoginScreen({ navigation }) {
                 50
             );
         } else {
-            setLoading(true); // Start showing progress circle
+            setLoading(true);
             signInWithEmailAndPassword(auth, email, password)
                 .then(() => {
-                    // User logged in successfully
                     console.log('Login Successful!');
                     const value = "Login Successful!";
                     ToastAndroid.showWithGravityAndOffset(
@@ -55,14 +54,11 @@ export default function LoginScreen({ navigation }) {
                         25,
                         50
                     );
-
-                    // Store the credentials if "Remember Me" is enabled
                     saveCredentials(email, password);
 
-                    navigation.navigate('Homes'); // Redirect to the home screen or another screen
+                    navigation.navigate('Homes');
                 })
                 .catch(error => {
-                    // Handle login errors (e.g., incorrect email or password)
                     if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
                         const value = "Incorrect Email or Password";
                         ToastAndroid.showWithGravityAndOffset(
@@ -446,6 +442,7 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        borderRadius: 24,
     },
     progressText: {
         marginTop: 20,

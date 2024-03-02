@@ -9,7 +9,6 @@ const ImageSuccessful = ({ route, navigation }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const nextPredict = async () => {
-        // Convert the captured image to FormData
         setIsLoading(true);
         const formData = new FormData();
         formData.append('image', {
@@ -31,7 +30,15 @@ const ImageSuccessful = ({ route, navigation }) => {
                 const data = await response.json();
                 if (data.status === 'success') { 
                     Alert.alert('Success', `Defectiveness: ${data.defectiveness}\nEdibility: ${data.edibility}`, [
-                        { text: 'OK', onPress: () => navigation.navigate('Home') }
+                        {
+                            text: 'OK', onPress: () => {
+                                if (capturedImageUri !== imageUri) {
+                                    navigation.navigate('MushroomDesc', { imageUri: capturedImageUri, defectiveness: data.defectiveness, edibility: data.edibility });
+                                } else {
+                                    navigation.navigate('MushroomDesc', { imageUri, defectiveness: data.defectiveness, edibility: data.edibility });
+                                }
+                            }
+                        }
                     ]);
                 } else {
                     // Handle unsuccessful response
